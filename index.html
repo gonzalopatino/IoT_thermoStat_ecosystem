@@ -1,264 +1,149 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CS-499 Computer Science Capstone ePortfolio | Gonzalo Patino</title>
-    <meta name="color-scheme" content="dark light" />
-    <meta name="description" content="SNHU CS-499 Computer Science Capstone ePortfolio showcasing software engineering, algorithms, and database skills through an ESP32 FreeRTOS Thermostat project." />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Science ePortfolio – SNHU CS-499 | Gonzalo Patino</title>
+    <meta name="description" content="Professional ePortfolio for SNHU CS-499 Computer Science Capstone by Gonzalo Patino">
+</head>
+<body style="font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; color: #333;">
 
-    <!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-
-    <!-- Site CSS -->
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-
-  <body>
-    <div id="top"></div>
-
-    <!-- Keyboard skip -->
-    <a class="skip-link" href="#main">Skip to content</a>
-
-    <!-- Fixed header -->
-    <header class="site-header fixed-top" role="banner">
-      <nav class="navbar navbar-expand-md navbar-dark glass-nav" aria-label="Primary">
-        <div class="container container--narrow">
-          <a class="navbar-brand fw-semibold" href="index.html">
-            <span class="brand-primary">CS-499 ePortfolio</span><br />
-            <span class="small text-muted">Gonzalo Patino</span>
-          </a>
-
-          <button
-            class="navbar-toggler border-0"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#primaryNav"
-            aria-controls="primaryNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div id="primaryNav" class="collapse navbar-collapse justify-content-end">
-            <ul class="navbar-nav align-items-center gap-1">
-              <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-              <li class="nav-item"><a class="nav-link" href="assessment/index.html">Self-Assessment</a></li>
-              <li class="nav-item"><a class="nav-link" href="code-review/index.html">Code Review</a></li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Artifacts</a>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="artifacts/software-engineering/index.html">Software Engineering</a></li>
-                  <li><a class="dropdown-item" href="artifacts/algorithms/index.html">Algorithms &amp; Data Structures</a></li>
-                  <li><a class="dropdown-item" href="artifacts/database/index.html">Databases</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+    <!-- ============================================
+         HEADER / TITLE SECTION
+         ============================================ -->
+    <header style="text-align: center; padding: 40px 0; border-bottom: 2px solid #ddd; margin-bottom: 40px;">
+        <h1 style="margin: 0 0 10px 0; font-size: 2.5em; color: #1a1a2e;">Gonzalo Patino</h1>
+        <p style="margin: 0; font-size: 1.4em; color: #555;">Computer Science ePortfolio – SNHU CS-499</p>
     </header>
 
-    <main id="main" class="container container--narrow my-4" role="main">
-      
-      <!-- Hero Section -->
-      <section class="card card--surface p-5 mb-4 reveal text-center">
-        <h1 class="display-5 fw-bold mb-3">Computer Science Capstone ePortfolio</h1>
-        <p class="lead muted mb-4">SNHU CS-499 | Gonzalo Patino | December 2025</p>
-        <p class="muted">[PLACEHOLDER: Brief introduction to portfolio and professional identity]</p>
-        <!-- Content to add:
-             - Welcome message
-             - Brief professional introduction
-             - Portfolio overview statement
-        -->
-      </section>
-
-      <!-- Quick Navigation Cards -->
-      <section class="row g-4 mb-4">
-        <div class="col-md-6">
-          <div class="card card--surface p-4 h-100 reveal">
-            <h2>Professional Self-Assessment</h2>
-            <p class="muted">[PLACEHOLDER: Summary of self-assessment content]</p>
-            <a class="btn btn-accent mt-auto" href="assessment/index.html">Read Self-Assessment →</a>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card card--surface p-4 h-100 reveal">
-            <h2>Code Review</h2>
-            <p class="muted">[PLACEHOLDER: Summary of code review video]</p>
-            <a class="btn btn-accent mt-auto" href="code-review/index.html">Watch Code Review →</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Artifact Overview Section -->
-      <section id="artifacts-overview" class="card card--surface p-4 mb-4 reveal">
-        <h2>Artifacts Overview</h2>
-        <p class="muted">[PLACEHOLDER: Introduction to the three artifact categories]</p>
-        <!-- Content to add:
-             - Overview of the ESP32 thermostat project
-             - How it spans all three categories
-             - Brief description of each enhancement
-        -->
-      </section>
-
-      <!-- Three Artifact Cards -->
-      <section class="row g-4 mb-4">
-        <div class="col-md-4">
-          <div class="card card--surface p-4 h-100 reveal">
-            <h3>Software Engineering &amp; Design</h3>
-            <p class="muted">[PLACEHOLDER: Brief description of software engineering artifact]</p>
-            <!-- Content to add:
-                 - Key enhancements summary
-                 - Technologies used
-                 - Skills demonstrated
-            -->
-            <ul class="list muted small">
-              <li>[Enhancement 1]</li>
-              <li>[Enhancement 2]</li>
-              <li>[Enhancement 3]</li>
-            </ul>
-            <a class="btn btn-outline-light mt-auto" href="artifacts/software-engineering/index.html">View Details →</a>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card card--surface p-4 h-100 reveal">
-            <h3>Algorithms &amp; Data Structures</h3>
-            <p class="muted">[PLACEHOLDER: Brief description of algorithms artifact]</p>
-            <!-- Content to add:
-                 - Key enhancements summary
-                 - Algorithms implemented
-                 - Skills demonstrated
-            -->
-            <ul class="list muted small">
-              <li>[Enhancement 1]</li>
-              <li>[Enhancement 2]</li>
-              <li>[Enhancement 3]</li>
-            </ul>
-            <a class="btn btn-outline-light mt-auto" href="artifacts/algorithms/index.html">View Details →</a>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card card--surface p-4 h-100 reveal">
-            <h3>Databases</h3>
-            <p class="muted">[PLACEHOLDER: Brief description of database artifact]</p>
-            <!-- Content to add:
-                 - Key enhancements summary
-                 - Database technologies used
-                 - Skills demonstrated
-            -->
-            <ul class="list muted small">
-              <li>[Enhancement 1]</li>
-              <li>[Enhancement 2]</li>
-              <li>[Enhancement 3]</li>
-            </ul>
-            <a class="btn btn-outline-light mt-auto" href="artifacts/database/index.html">View Details →</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Project Summary Section -->
-      <section id="project-summary" class="card card--surface p-4 mb-4 reveal">
-        <h2>Project Summary</h2>
-        <p class="muted">[PLACEHOLDER: High-level summary of the ESP32 FreeRTOS Thermostat project]</p>
-        <!-- Content to add:
-             - Project description
-             - Original course (CS-350)
-             - Technologies: ESP32, FreeRTOS, Django, PostgreSQL
-             - System architecture overview
-        -->
-        <div class="row mt-4">
-          <div class="col-md-6">
-            <h4>Original Artifact</h4>
-            <p class="muted">[PLACEHOLDER: Original CS-350 project description]</p>
-          </div>
-          <div class="col-md-6">
-            <h4>Enhanced System</h4>
-            <p class="muted">[PLACEHOLDER: Enhanced full-stack IoT system description]</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Course Outcomes Preview -->
-      <section id="outcomes-preview" class="card card--surface p-4 mb-4 reveal">
-        <h2>Course Outcomes</h2>
-        <p class="muted">[PLACEHOLDER: Brief overview of how portfolio meets CS-499 course outcomes]</p>
-        <!-- Content to add:
-             - List of course outcomes
-             - Brief mapping to artifacts
-             - Link to full self-assessment
-        -->
-        <a class="btn btn-accent" href="assessment/index.html">View Full Assessment →</a>
-      </section>
-
-      <!-- Repository Links Section -->
-      <section id="repositories" class="card card--surface p-4 mb-4 reveal">
-        <h2>Code Repositories</h2>
-        <p class="muted">[PLACEHOLDER: Links to all relevant code repositories]</p>
-        <!-- Content to add:
-             - Link to ESP32 thermostat repo
-             - Link to Django backend repo
-             - Link to portfolio repo
-             - Links to original code in /artifacts/original/
-             - Links to enhanced code in /artifacts/enhanced/
-        -->
-        <div class="d-flex flex-wrap gap-2">
-          <a class="btn btn-outline-light disabled" aria-disabled="true" href="#">ESP32 Firmware</a>
-          <a class="btn btn-outline-light disabled" aria-disabled="true" href="#">Django Backend</a>
-          <a class="btn btn-outline-light" href="https://github.com/gonzalopatino/gonzalopatino.github.io">Portfolio Source</a>
-        </div>
-      </section>
-
-      <!-- About Section -->
-      <section id="about" class="card card--surface p-4 mb-4 reveal">
-        <h2>About Me</h2>
-        <p class="muted">[PLACEHOLDER: Brief professional bio]</p>
-        <!-- Content to add:
-             - Professional background
-             - Education summary
-             - Career interests
-             - Contact information
-        -->
-        <ul class="list muted">
-          <li><strong>Program:</strong> B.S. Computer Science, SNHU</li>
-          <li><strong>Concentration:</strong> [Placeholder]</li>
-          <li><strong>Contact:</strong> <a href="mailto:gonzalopatino@users.noreply.github.com">[email placeholder]</a></li>
-          <li><strong>LinkedIn:</strong> <a href="#">[placeholder]</a></li>
-          <li><strong>GitHub:</strong> <a href="https://github.com/gonzalopatino">gonzalopatino</a></li>
-        </ul>
-      </section>
-
-      <div class="text-end">
-        <a
-          class="small"
-          href="#top"
-          onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;"
-        >Back to top</a>
-      </div>
-    </main>
-
-    <footer class="site-footer" role="contentinfo">
-      <div class="container container--narrow">
-        <p class="muted small mb-0">
-          © 2025 Gonzalo Patino. SNHU CS-499 Computer Science Capstone. Built with accessible HTML, Bootstrap 5, and modern JavaScript.
+    <!-- ============================================
+         PROFESSIONAL INTRODUCTION
+         ============================================ -->
+    <section style="margin-bottom: 40px; padding: 25px; background-color: #f8f9fa; border-radius: 8px;">
+        <h2 style="margin-top: 0; color: #1a1a2e;">Welcome</h2>
+        <p>
+            I am a Computer Scientist and software engineer with a passion for building robust, 
+            efficient systems that bridge the gap between hardware and software. This ePortfolio 
+            represents the culmination of my studies in the SNHU Computer Science program, 
+            specifically the CS-499 Capstone course. Here, you will find a curated collection 
+            of work that demonstrates my growth, skills, and readiness to contribute 
+            meaningfully to the field of computer science.
         </p>
-      </div>
+    </section>
+
+    <!-- ============================================
+         NAVIGATION BUTTONS / CARDS
+         ============================================ -->
+    <section style="margin-bottom: 40px;">
+        <h2 style="color: #1a1a2e; border-bottom: 1px solid #ddd; padding-bottom: 10px;">Portfolio Navigation</h2>
+        <p>Use the links below to explore each section of this ePortfolio:</p>
+        
+        <nav style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px;">
+            <a href="assessment/index.html" 
+               style="display: inline-block; padding: 15px 25px; background-color: #1a1a2e; color: white; text-decoration: none; border-radius: 6px; font-weight: 500; text-align: center; min-width: 200px;">
+                Professional Self-Assessment
+            </a>
+            <a href="code-review/index.html" 
+               style="display: inline-block; padding: 15px 25px; background-color: #1a1a2e; color: white; text-decoration: none; border-radius: 6px; font-weight: 500; text-align: center; min-width: 200px;">
+                Code Review
+            </a>
+            <a href="artifacts/software-engineering/index.html" 
+               style="display: inline-block; padding: 15px 25px; background-color: #2d4a6f; color: white; text-decoration: none; border-radius: 6px; font-weight: 500; text-align: center; min-width: 200px;">
+                Software Engineering &amp; Design
+            </a>
+            <a href="artifacts/algorithms/index.html" 
+               style="display: inline-block; padding: 15px 25px; background-color: #2d4a6f; color: white; text-decoration: none; border-radius: 6px; font-weight: 500; text-align: center; min-width: 200px;">
+                Algorithms &amp; Data Structures
+            </a>
+            <a href="artifacts/database/index.html" 
+               style="display: inline-block; padding: 15px 25px; background-color: #2d4a6f; color: white; text-decoration: none; border-radius: 6px; font-weight: 500; text-align: center; min-width: 200px;">
+                Databases
+            </a>
+        </nav>
+    </section>
+
+    <!-- ============================================
+         SECTION: ABOUT THIS PORTFOLIO
+         ============================================ -->
+    <section style="margin-bottom: 40px; padding: 25px; background-color: #fff; border: 1px solid #ddd; border-radius: 8px;">
+        <h2 style="margin-top: 0; color: #1a1a2e;">About This Portfolio</h2>
+        <p>
+            This ePortfolio serves as a comprehensive showcase of the skills, knowledge, and 
+            professional growth I have achieved throughout the Computer Science program at 
+            Southern New Hampshire University. It is designed to demonstrate competency across 
+            multiple domains of computer science, including software engineering, algorithm 
+            design, and database management.
+        </p>
+        <p>
+            Each section of this portfolio has been carefully constructed to meet the 
+            requirements of the CS-499 Computer Science Capstone course while also serving 
+            as a professional resource for potential employers and collaborators.
+        </p>
+    </section>
+
+    <!-- ============================================
+         SECTION: ARTIFACT CATEGORIES
+         ============================================ -->
+    <section style="margin-bottom: 40px; padding: 25px; background-color: #fff; border: 1px solid #ddd; border-radius: 8px;">
+        <h2 style="margin-top: 0; color: #1a1a2e;">Artifact Categories</h2>
+        <p>
+            The artifacts presented in this portfolio are organized into three primary 
+            categories, each representing a core pillar of computer science expertise:
+        </p>
+        <ul style="padding-left: 20px;">
+            <li style="margin-bottom: 10px;">
+                <strong>Software Engineering &amp; Design:</strong> 
+                Demonstrates proficiency in software architecture, modular design, 
+                and engineering best practices.
+            </li>
+            <li style="margin-bottom: 10px;">
+                <strong>Algorithms &amp; Data Structures:</strong> 
+                Showcases the ability to design, analyze, and implement efficient 
+                algorithms and appropriate data structures.
+            </li>
+            <li style="margin-bottom: 10px;">
+                <strong>Databases:</strong> 
+                Illustrates skills in database design, implementation, and 
+                integration with software applications.
+            </li>
+        </ul>
+    </section>
+
+    <!-- ============================================
+         SECTION: HOW TO NAVIGATE THIS SITE
+         ============================================ -->
+    <section style="margin-bottom: 40px; padding: 25px; background-color: #fff; border: 1px solid #ddd; border-radius: 8px;">
+        <h2 style="margin-top: 0; color: #1a1a2e;">How to Navigate This Site</h2>
+        <p>
+            This portfolio is structured to provide a clear and logical progression through 
+            my work and accomplishments. Here is a recommended path for exploring the content:
+        </p>
+        <ol style="padding-left: 20px;">
+            <li style="margin-bottom: 10px;">
+                <strong>Start with the Professional Self-Assessment</strong> – 
+                This provides context for my academic journey and professional goals.
+            </li>
+            <li style="margin-bottom: 10px;">
+                <strong>Watch the Code Review</strong> – 
+                A video walkthrough that introduces the original artifact and planned enhancements.
+            </li>
+            <li style="margin-bottom: 10px;">
+                <strong>Explore Each Artifact Category</strong> – 
+                Dive into the detailed narratives and enhanced code for each of the three categories.
+            </li>
+        </ol>
+        <p>
+            Each page includes navigation elements to help you move between sections easily. 
+            Use the navigation buttons at the top of this page to jump directly to any section.
+        </p>
+    </section>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer style="text-align: center; padding: 30px 0; border-top: 2px solid #ddd; margin-top: 40px; color: #666;">
+        <p style="margin: 0;">© 2025 Gonzalo Patino | SNHU CS-499 Computer Science Capstone</p>
     </footer>
 
-    <!-- Bootstrap bundle -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-
-    <!-- App logic -->
-    <script type="module" src="app.js"></script>
-  </body>
+</body>
 </html>
