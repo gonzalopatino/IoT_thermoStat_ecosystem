@@ -16,21 +16,30 @@ export default function OriginalCode() {
       <Section title="B. Original Project Components">
         <ul className="component-list">
           <li>
-            <a href="#">Original Thermostat Application (CS-350 Python)</a>
+            <a href="https://github.com/gonzalopatino/iot_thermostat_v1" target="_blank" rel="noopener noreferrer">Original Thermostat Application (CS-350 Python)</a>
             <p className="text-muted">
-              [PLACEHOLDER: Brief description of the original Python-based thermostat application from CS-350.]
+              The original thermostat was implemented as a Python script running on a Raspberry Pi. 
+              It used a simple polling loop to read temperature data from a sensor, compare it against 
+              a fixed setpoint, and control a GPIO pin to simulate heater activation. This monolithic 
+              implementation served as the baseline artifact evaluated during the code review.
             </p>
           </li>
           <li>
-            <a href="#">Original Control Logic Module</a>
+            <a href="https://github.com/gonzalopatino/iot_thermostat_v1" target="_blank" rel="noopener noreferrer">Original Control Logic Module</a>
             <p className="text-muted">
-              [PLACEHOLDER: Brief description of the original control logic and decision-making implementation.]
+              The control logic in the original project relied on direct threshold comparisons with 
+              a basic hysteresis gap to reduce cycling. There was no formal state machine, no minimum 
+              on/off timing enforcement, and no structured error handling. This reactive approach 
+              represented the algorithmic baseline identified for enhancement.
             </p>
           </li>
           <li>
-            <a href="#">Original Data Handling / Logging Implementation</a>
+            <a href="https://github.com/gonzalopatino/iot_thermostat_v1" target="_blank" rel="noopener noreferrer">Original Data Handling and Logging Implementation</a>
             <p className="text-muted">
-              [PLACEHOLDER: Brief description of the original data handling and logging approach.]
+              The original system operated entirely in memory with no persistent storage or telemetry 
+              capability. Temperature readings and system state were printed to the console but not 
+              logged or transmitted. This lack of data persistence was a key limitation addressed 
+              in the database enhancement.
             </p>
           </li>
         </ul>

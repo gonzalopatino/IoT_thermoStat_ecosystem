@@ -16,21 +16,32 @@ export default function EnhancedCode() {
       <Section title="B. Enhanced Project Components">
         <ul className="component-list">
           <li>
-            <a href="#">ESP32 FreeRTOS Thermostat Firmware (C/C++)</a>
+            <a href="https://github.com/gonzalopatino/ESP32_FreeRTOS_Thermostat" target="_blank" rel="noopener noreferrer">ESP32 FreeRTOS Thermostat Firmware (C/C++)</a>
             <p className="text-muted">
-              [PLACEHOLDER: Brief description of the enhanced embedded firmware with FreeRTOS task architecture.]
+              The enhanced firmware runs on an ESP32 microcontroller using FreeRTOS for real-time 
+              task management. The architecture separates sensing, control logic, display, networking, 
+              and system supervision into independent tasks communicating through queues and mutexes. 
+              This modular design directly addresses the software engineering artifact requirements 
+              and demonstrates professional embedded systems practices.
             </p>
           </li>
           <li>
-            <a href="#">Django + PostgreSQL Telemetry Backend</a>
+            <a href="https://github.com/gonzalopatino/ESP32_FreeRTOS_Thermostat_Server" target="_blank" rel="noopener noreferrer">Django + PostgreSQL Telemetry Backend</a>
             <p className="text-muted">
-              [PLACEHOLDER: Brief description of the backend system for telemetry collection, storage, and API endpoints.]
+              The backend platform provides device registration, API key authentication, telemetry 
+              ingestion, alert configuration, and a real-time dashboard. Built with Django and 
+              PostgreSQL, it implements a normalized schema for users, devices, and telemetry 
+              snapshots. This component fulfills the database artifact requirements and enables 
+              cloud connectivity for the thermostat ecosystem.
             </p>
           </li>
           <li>
-            <a href="#">Shared Data Models, Messages, and APIs</a>
+            <a href="https://github.com/gonzalopatino/ESP32_FreeRTOS_Thermostat" target="_blank" rel="noopener noreferrer">Shared Data Models, Messages, and APIs</a>
             <p className="text-muted">
-              [PLACEHOLDER: Brief description of the communication protocols and data structures shared between firmware and backend.]
+              The firmware and backend communicate through a RESTful API using JSON payloads. 
+              Telemetry messages include temperature readings, setpoint, heater state, and system 
+              mode. Request signing with hashed API keys ensures secure, authenticated communication. 
+              These shared protocols demonstrate integration between embedded and backend systems.
             </p>
           </li>
         </ul>
