@@ -1,0 +1,388 @@
+/* ===================================
+   FSM Animation - Algorithms Category
+   ================================== */
+
+.fsm-animation {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  background: linear-gradient(180deg, #000000 0%, #0a0a12 50%, #0f0f1a 100%);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin: var(--space-lg) 0;
+  border: 1px solid var(--color-border);
+}
+
+.fsm-animation--static {
+  min-height: auto;
+  padding: var(--space-xl);
+}
+
+/* ===================================
+   Grid Background
+   ================================== */
+
+.fsm-animation__grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+/* ===================================
+   Container
+   ================================== */
+
+.fsm-animation__container {
+  position: relative;
+  z-index: 2;
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.fsm-animation__title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin: 0;
+  text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+}
+
+/* ===================================
+   Diagram
+   ================================== */
+
+.fsm-animation__diagram {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  height: 280px;
+}
+
+/* SVG Connections */
+.fsm-animation__connections {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.fsm-animation__path {
+  fill: none;
+  stroke: var(--color-border);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+  opacity: 0.4;
+  transition: all 0.5s ease;
+}
+
+.fsm-animation__path--active {
+  stroke: var(--color-primary);
+  stroke-width: 2.5;
+  opacity: 1;
+  stroke-dasharray: none;
+  filter: drop-shadow(0 0 6px var(--color-primary));
+  animation: pathPulse 0.5s ease;
+}
+
+.fsm-animation__path--error {
+  stroke-dasharray: 2 4;
+}
+
+.fsm-animation__path--recovery {
+  stroke-dasharray: 6 3;
+}
+
+@keyframes pathPulse {
+  0% { stroke-width: 2.5; }
+  50% { stroke-width: 4; }
+  100% { stroke-width: 2.5; }
+}
+
+/* ===================================
+   State Nodes
+   ================================== */
+
+.fsm-animation__state {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+.fsm-animation__state-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(30, 30, 40, 0.9);
+  border: 2px solid var(--color-border);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.fsm-animation__state-label {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+/* State Colors */
+.fsm-animation__state--gray .fsm-animation__state-inner {
+  border-color: #6b7280;
+}
+.fsm-animation__state--gray .fsm-animation__state-inner svg {
+  color: #6b7280;
+}
+
+.fsm-animation__state--red .fsm-animation__state-inner {
+  border-color: #ef4444;
+}
+.fsm-animation__state--red .fsm-animation__state-inner svg {
+  color: #ef4444;
+}
+
+.fsm-animation__state--cyan .fsm-animation__state-inner {
+  border-color: var(--color-cyan);
+}
+.fsm-animation__state--cyan .fsm-animation__state-inner svg {
+  color: var(--color-cyan);
+}
+
+.fsm-animation__state--yellow .fsm-animation__state-inner {
+  border-color: #eab308;
+}
+.fsm-animation__state--yellow .fsm-animation__state-inner svg {
+  color: #eab308;
+}
+
+/* Active State */
+.fsm-animation__state--active .fsm-animation__state-inner {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.4);
+}
+
+.fsm-animation__state--active.fsm-animation__state--gray .fsm-animation__state-inner {
+  background: rgba(107, 114, 128, 0.2);
+  box-shadow: 0 0 30px rgba(107, 114, 128, 0.4);
+}
+
+.fsm-animation__state--active.fsm-animation__state--red .fsm-animation__state-inner {
+  background: rgba(239, 68, 68, 0.2);
+  box-shadow: 0 0 30px rgba(239, 68, 68, 0.4);
+}
+
+.fsm-animation__state--active.fsm-animation__state--cyan .fsm-animation__state-inner {
+  background: rgba(34, 211, 238, 0.2);
+  box-shadow: 0 0 30px rgba(34, 211, 238, 0.4);
+}
+
+.fsm-animation__state--active.fsm-animation__state--yellow .fsm-animation__state-inner {
+  background: rgba(234, 179, 8, 0.2);
+  box-shadow: 0 0 30px rgba(234, 179, 8, 0.4);
+}
+
+/* Active Ring */
+.fsm-animation__state-ring {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  opacity: 0;
+  animation: stateRing 1.5s ease-out infinite;
+}
+
+.fsm-animation__state--gray .fsm-animation__state-ring { border-color: #6b7280; }
+.fsm-animation__state--red .fsm-animation__state-ring { border-color: #ef4444; }
+.fsm-animation__state--cyan .fsm-animation__state-ring { border-color: var(--color-cyan); }
+.fsm-animation__state--yellow .fsm-animation__state-ring { border-color: #eab308; }
+
+@keyframes stateRing {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* ===================================
+   Info Section
+   ================================== */
+
+.fsm-animation__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  min-height: 50px;
+}
+
+.fsm-animation__current-state {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.fsm-animation__state-badge {
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: var(--font-size-xs);
+}
+
+.fsm-animation__state-badge--gray {
+  background: rgba(107, 114, 128, 0.2);
+  color: #9ca3af;
+}
+.fsm-animation__state-badge--red {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+}
+.fsm-animation__state-badge--cyan {
+  background: rgba(34, 211, 238, 0.2);
+  color: var(--color-cyan);
+}
+.fsm-animation__state-badge--yellow {
+  background: rgba(234, 179, 8, 0.2);
+  color: #facc15;
+}
+
+.fsm-animation__transition-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+  animation: fadeIn 0.3s ease;
+}
+
+.fsm-animation__transition-label {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===================================
+   Legend
+   ================================== */
+
+.fsm-animation__legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+  padding-top: var(--space-sm);
+}
+
+.fsm-animation__legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.fsm-animation__legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.fsm-animation__legend-dot--gray { background: #6b7280; }
+.fsm-animation__legend-dot--red { background: #ef4444; }
+.fsm-animation__legend-dot--cyan { background: var(--color-cyan); }
+.fsm-animation__legend-dot--yellow { background: #eab308; }
+
+/* ===================================
+   Static Grid
+   ================================== */
+
+.fsm-animation__states-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+}
+
+.fsm-animation__state-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background: rgba(30, 30, 40, 0.6);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.fsm-animation__state-card--gray { border-left: 3px solid #6b7280; }
+.fsm-animation__state-card--red { border-left: 3px solid #ef4444; }
+.fsm-animation__state-card--cyan { border-left: 3px solid var(--color-cyan); }
+.fsm-animation__state-card--yellow { border-left: 3px solid #eab308; }
+
+.fsm-animation__state-card--gray svg { color: #6b7280; }
+.fsm-animation__state-card--red svg { color: #ef4444; }
+.fsm-animation__state-card--cyan svg { color: var(--color-cyan); }
+.fsm-animation__state-card--yellow svg { color: #eab308; }
+
+/* ===================================
+   Responsive
+   ================================== */
+
+@media (max-width: 600px) {
+  .fsm-animation__diagram {
+    height: 320px;
+  }
+
+  .fsm-animation__state-inner {
+    width: 65px;
+    height: 65px;
+  }
+
+  .fsm-animation__state-inner svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .fsm-animation__state-label {
+    font-size: 0.65rem;
+  }
+
+  .fsm-animation__states-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===================================
+   Reduced Motion
+   ================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .fsm-animation__path--active,
+  .fsm-animation__state-ring,
+  .fsm-animation__transition-info {
+    animation: none;
+  }
+
+  .fsm-animation__state-ring {
+    display: none;
+  }
+}

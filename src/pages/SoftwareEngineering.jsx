@@ -16,7 +16,7 @@ import TableOfContents from '../components/TableOfContents';
 import KeyTakeaways from '../components/KeyTakeaways';
 import ComparisonBlock from '../components/ComparisonBlock';
 import CTAFooter from '../components/CTAFooter';
-import SystemFlowAnimation from '../components/SystemFlowAnimation';
+import IoTFlowAnimation from '../components/IoTFlowAnimation';
 
 const tocItems = [
   { id: 'overview', label: 'Artifact Overview' },
@@ -79,7 +79,7 @@ export default function SoftwareEngineering() {
         badges={['ESP32', 'FreeRTOS', 'C/C++', 'Embedded Systems', 'Modular Architecture', 'HAL']}
       />
 
-      <SystemFlowAnimation />
+      <IoTFlowAnimation />
 
       <TableOfContents items={tocItems} />
 

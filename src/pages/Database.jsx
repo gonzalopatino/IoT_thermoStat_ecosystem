@@ -15,7 +15,7 @@ import TableOfContents from '../components/TableOfContents';
 import KeyTakeaways from '../components/KeyTakeaways';
 import ComparisonBlock from '../components/ComparisonBlock';
 import CTAFooter from '../components/CTAFooter';
-import SystemFlowAnimation from '../components/SystemFlowAnimation';
+import DataFlowAnimation from '../components/DataFlowAnimation';
 
 const tocItems = [
   { id: 'overview', label: 'Artifact Overview' },
@@ -78,7 +78,7 @@ export default function Database() {
         badges={['PostgreSQL', 'Django', 'REST API', 'Security', 'ORM', 'Telemetry']}
       />
 
-      <SystemFlowAnimation />
+      <DataFlowAnimation />
 
       <TableOfContents items={tocItems} />
 

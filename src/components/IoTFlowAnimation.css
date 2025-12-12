@@ -1,0 +1,410 @@
+/* ===================================
+   IoT Flow Animation - Software Engineering
+   ================================== */
+
+.iot-flow {
+  position: relative;
+  width: 100%;
+  min-height: 320px;
+  background: linear-gradient(180deg, #000000 0%, #0a0a12 50%, #0f0f1a 100%);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin: var(--space-lg) 0;
+  border: 1px solid var(--color-border);
+}
+
+.iot-flow--static {
+  min-height: auto;
+  padding: var(--space-xl);
+}
+
+/* ===================================
+   Binary Rain Background
+   ================================== */
+
+.iot-flow__binary-rain {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.iot-flow__digit {
+  position: absolute;
+  top: -30px;
+  color: var(--color-primary);
+  font-family: 'Fira Code', 'Consolas', monospace;
+  font-weight: 600;
+  opacity: 0;
+  text-shadow: 0 0 8px var(--color-primary);
+  animation: binaryFall linear forwards;
+}
+
+@keyframes binaryFall {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  10% {
+    opacity: 0.7;
+  }
+  80% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(400px);
+  }
+}
+
+/* Variation in colors for some digits */
+.iot-flow__digit:nth-child(3n) {
+  color: var(--color-cyan);
+  text-shadow: 0 0 8px var(--color-cyan);
+}
+
+.iot-flow__digit:nth-child(5n) {
+  color: var(--color-emerald);
+  text-shadow: 0 0 8px var(--color-emerald);
+}
+
+.iot-flow__digit:nth-child(7n) {
+  color: var(--color-purple);
+  text-shadow: 0 0 8px var(--color-purple);
+}
+
+/* ===================================
+   Main Container
+   ================================== */
+
+.iot-flow__container {
+  position: relative;
+  z-index: 2;
+  padding: var(--space-xl) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.iot-flow__title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin: 0;
+  text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+}
+
+/* ===================================
+   Flow Stage
+   ================================== */
+
+.iot-flow__stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 900px;
+}
+
+/* ===================================
+   Nodes
+   ================================== */
+
+.iot-flow__node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-md);
+  min-width: 100px;
+}
+
+.iot-flow__icon-wrapper {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(99, 102, 241, 0.1);
+  border: 2px solid var(--color-primary);
+  transition: all 0.3s ease;
+}
+
+.iot-flow__icon-wrapper svg {
+  color: var(--color-primary);
+  z-index: 2;
+}
+
+.iot-flow__icon-wrapper--dual {
+  gap: var(--space-xs);
+  width: 90px;
+  border-radius: var(--radius-md);
+}
+
+/* Node-specific colors */
+.iot-flow__node--thermostat .iot-flow__icon-wrapper {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: #ef4444;
+}
+.iot-flow__node--thermostat .iot-flow__icon-wrapper svg {
+  color: #ef4444;
+}
+
+.iot-flow__node--edge .iot-flow__icon-wrapper {
+  background: rgba(34, 211, 238, 0.15);
+  border-color: var(--color-cyan);
+}
+.iot-flow__node--edge .iot-flow__icon-wrapper svg {
+  color: var(--color-cyan);
+}
+
+.iot-flow__node--cloud .iot-flow__icon-wrapper {
+  background: rgba(99, 102, 241, 0.15);
+  border-color: var(--color-primary);
+}
+.iot-flow__node--cloud .iot-flow__icon-wrapper svg {
+  color: var(--color-primary);
+}
+
+.iot-flow__node--clients .iot-flow__icon-wrapper {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: var(--color-emerald);
+}
+.iot-flow__node--clients .iot-flow__icon-wrapper svg {
+  color: var(--color-emerald);
+}
+
+/* Pulse effect */
+.iot-flow__pulse {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  opacity: 0;
+  animation: nodePulse 2s ease-out infinite;
+}
+
+.iot-flow__node--thermostat .iot-flow__pulse {
+  border-color: #ef4444;
+  animation-delay: 0s;
+}
+
+.iot-flow__node--edge .iot-flow__pulse {
+  border-color: var(--color-cyan);
+  animation-delay: 0.5s;
+}
+
+.iot-flow__node--cloud .iot-flow__pulse {
+  border-color: var(--color-primary);
+  animation-delay: 1s;
+}
+
+.iot-flow__node--clients .iot-flow__pulse {
+  border-color: var(--color-emerald);
+  animation-delay: 1.5s;
+}
+
+@keyframes nodePulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* Labels */
+.iot-flow__label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.iot-flow__sublabel {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+/* ===================================
+   Connection Lines
+   ================================== */
+
+.iot-flow__connection {
+  position: relative;
+  width: 60px;
+  height: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.iot-flow__line {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    var(--color-border) 0%, 
+    var(--color-primary) 50%, 
+    var(--color-border) 100%
+  );
+  opacity: 0.6;
+}
+
+/* Data Packets */
+.iot-flow__data-packet {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--color-primary), 0 0 20px var(--color-primary);
+  animation: packetMove 2s ease-in-out infinite;
+}
+
+.iot-flow__data-packet--1 { animation-delay: 0s; }
+.iot-flow__data-packet--2 { animation-delay: 1s; }
+.iot-flow__data-packet--3 { animation-delay: 0.3s; }
+.iot-flow__data-packet--4 { animation-delay: 1.3s; }
+.iot-flow__data-packet--5 { animation-delay: 0.6s; }
+.iot-flow__data-packet--6 { animation-delay: 1.6s; }
+
+@keyframes packetMove {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    left: calc(100% - 8px);
+    opacity: 0;
+  }
+}
+
+/* ===================================
+   Data Labels
+   ================================== */
+
+.iot-flow__data-labels {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 700px;
+  padding-top: var(--space-sm);
+}
+
+.iot-flow__data-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ===================================
+   Static Version (for connectors)
+   ================================== */
+
+.iot-flow--static .iot-flow__stage {
+  gap: var(--space-md);
+}
+
+.iot-flow--static .iot-flow__connector {
+  font-size: var(--font-size-xl);
+  color: var(--color-primary);
+}
+
+/* ===================================
+   Responsive
+   ================================== */
+
+@media (max-width: 768px) {
+  .iot-flow {
+    min-height: 500px;
+  }
+
+  .iot-flow__stage {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .iot-flow__connection {
+    width: 4px;
+    height: 40px;
+    flex-direction: column;
+  }
+
+  .iot-flow__line {
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, 
+      var(--color-border) 0%, 
+      var(--color-primary) 50%, 
+      var(--color-border) 100%
+    );
+  }
+
+  @keyframes packetMove {
+    0% {
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      top: calc(100% - 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+    }
+  }
+
+  .iot-flow__data-labels {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .iot-flow--static .iot-flow__stage {
+    gap: var(--space-sm);
+  }
+
+  .iot-flow--static .iot-flow__connector {
+    transform: rotate(90deg);
+  }
+}
+
+/* ===================================
+   Reduced Motion
+   ================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .iot-flow__digit,
+  .iot-flow__pulse,
+  .iot-flow__data-packet {
+    animation: none;
+  }
+
+  .iot-flow__digit {
+    display: none;
+  }
+}

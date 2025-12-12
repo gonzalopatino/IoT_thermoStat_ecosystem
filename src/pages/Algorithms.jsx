@@ -15,7 +15,7 @@ import TableOfContents from '../components/TableOfContents';
 import KeyTakeaways from '../components/KeyTakeaways';
 import ComparisonBlock from '../components/ComparisonBlock';
 import CTAFooter from '../components/CTAFooter';
-import SystemFlowAnimation from '../components/SystemFlowAnimation';
+import FSMAnimation from '../components/FSMAnimation';
 
 const tocItems = [
   { id: 'overview', label: 'Artifact Overview' },
@@ -78,7 +78,7 @@ export default function Algorithms() {
         badges={['FSM', 'Hysteresis', 'State Machine', 'O(1) Complexity', 'Real-Time', 'Embedded']}
       />
 
-      <SystemFlowAnimation />
+      <FSMAnimation />
 
       <TableOfContents items={tocItems} />
 
