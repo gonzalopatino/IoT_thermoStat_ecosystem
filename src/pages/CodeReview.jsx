@@ -100,8 +100,11 @@ export default function CodeReview() {
         <nav aria-label="Artifact navigation">
           <ul className="evaluator-nav">
             <li><Link to="/">Back to Home</Link></li>
-            <li><Link to="/assessment">Previous: Self-Assessment</Link></li>
-            <li><Link to="/software-engineering">Next: Software Engineering</Link></li>
+            <li><Link to="/assessment">Professional Self-Assessment</Link></li>
+            <li><Link to="/code-review">Code Review</Link></li>
+            <li><Link to="/software-engineering">Software Engineering</Link></li>
+            <li><Link to="/algorithms">Algorithms</Link></li>
+            <li><Link to="/database">Database</Link></li>
             <li><Link to="/original-code">Original Code</Link></li>
             <li><Link to="/enhanced-code">Enhanced Code</Link></li>
           </ul>

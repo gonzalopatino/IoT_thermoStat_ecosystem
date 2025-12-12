@@ -13,8 +13,8 @@ export default function Assessment() {
           that separate functional code from truly excellent engineering.
         </p>
         <p>
-          Throughout my time in this program, I have grown not just as a programmer, but as a 
-          computer scientist—someone capable of analyzing problems systematically, designing 
+          Throughout my time in this program, I have grown as a 
+          computer scientist; someone capable of analyzing problems systematically, designing 
           solutions thoughtfully, and communicating technical ideas clearly. This ePortfolio 
           represents the culmination of that growth. It brings together artifacts from across 
           my studies, enhanced through the lens of the CS-499 Capstone, to demonstrate mastery 
@@ -41,7 +41,7 @@ export default function Assessment() {
         <p>
           Each course built upon the last, creating a cohesive body of knowledge that I now apply 
           daily in my professional work. The thermostat project I selected as my capstone artifact 
-          is a direct product of this journey—an embedded system that began as a simple temperature 
+          is a direct product of this journey; an embedded system that began as a simple temperature 
           controller and has evolved into a sophisticated, networked IoT device with cloud integration.
         </p>
       </Section>
@@ -49,15 +49,14 @@ export default function Assessment() {
       <Section title="Collaborating in a Team Environment">
         <p>
           Software development is rarely a solitary endeavor, and my experience in this program 
-          has reinforced the importance of collaboration. In CS-310 (Collaboration and Team Project), 
-          I worked with peers on shared codebases, learning to navigate the complexities of version 
-          control, code reviews, and collaborative problem-solving.
+          has reinforced the importance of collaboration. I worked with peers on shared codebases, 
+          learning to navigate the complexities of version control, code reviews, and collaborative problem-solving.
         </p>
         <p>
           In my professional work, I apply these lessons daily. I use Git for version control, 
           participate in code reviews, and communicate technical decisions clearly to both technical 
           and non-technical stakeholders. The thermostat project itself demonstrates this collaborative 
-          mindset—the codebase is structured to be readable and maintainable by others, with clear 
+          mindset; the codebase is structured to be readable and maintainable by others, with clear 
           documentation, consistent naming conventions, and modular architecture that allows team 
           members to work on different components independently.
         </p>
@@ -101,8 +100,8 @@ export default function Assessment() {
       <Section title="Software Engineering and Database">
         <p>
           The software engineering enhancements to the thermostat project showcase professional 
-          development practices. The firmware is organized into discrete components—sensor drivers, 
-          control logic, network handlers, and display managers—each with well-defined interfaces. 
+          development practices. The firmware is organized into discrete components: sensor drivers, 
+          control logic, network handlers, and display managers;each with well-defined interfaces. 
           This modularity enables testing, simplifies debugging, and allows for future extension 
           without disrupting existing functionality.
         </p>
@@ -143,10 +142,10 @@ export default function Assessment() {
         </p>
         <p>
           As I move forward in my career, I carry with me the lessons learned in this program. 
-          I understand that good software is not just functional—it is maintainable, secure, 
+          I understand that good software is not just functional; it is scalable, maintainable, secure, 
           and designed with both users and fellow developers in mind. I am prepared to work 
           collaboratively, to communicate effectively, and to continue learning as the field 
-          evolves. This ePortfolio is not an endpoint, but a milestone—a demonstration of 
+          evolves. This ePortfolio is not an endpoint, but a milestone; a demonstration of 
           where I am today and a foundation for the growth that lies ahead.
         </p>
       </Section>
