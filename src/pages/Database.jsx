@@ -1,18 +1,78 @@
 import { Link } from 'react-router-dom';
 import Section from '../components/Section';
 import DiagramViewer from '../components/DiagramViewer';
+import PageHero from '../components/PageHero';
+import TableOfContents from '../components/TableOfContents';
+import KeyTakeaways from '../components/KeyTakeaways';
+import ComparisonBlock from '../components/ComparisonBlock';
+import CTAFooter from '../components/CTAFooter';
+
+const tocItems = [
+  { id: 'overview', label: 'Artifact Overview' },
+  { id: 'original-approach', label: 'Original Approach' },
+  { id: 'enhanced-design', label: 'Enhanced Design' },
+  { id: 'data-management', label: 'Data Management' },
+  { id: 'security', label: 'Security & Reliability' },
+  { id: 'outcomes', label: 'Course Outcomes' },
+  { id: 'diagrams', label: 'Schema & Documents' },
+];
+
+const keyTakeaways = [
+  {
+    type: 'original',
+    title: 'Original State',
+    content: 'No persistence whatsoever—all data existed only in memory and was lost on restart.'
+  },
+  {
+    type: 'enhanced',
+    title: 'Enhanced State',
+    content: 'PostgreSQL with Django ORM: normalized schema, hashed API keys, and secure telemetry ingestion.'
+  },
+  {
+    type: 'impact',
+    title: 'Why It Matters',
+    content: 'Transforms an isolated device into a cloud-connected IoT platform with historical analysis and alerting.'
+  },
+  {
+    type: 'outcomes',
+    title: 'CS-499 Outcomes',
+    content: 'Demonstrates Outcomes 3, 4, and 5: database design, industry tools, and security-first mindset.'
+  }
+];
+
+const comparisonOriginal = [
+  'No database or persistent storage',
+  'Data lost on every restart',
+  'No user accounts or ownership model',
+  'No validation or data integrity',
+  'No API or authentication',
+  'Single-device, short-lived operation'
+];
+
+const comparisonEnhanced = [
+  'PostgreSQL with normalized relational schema',
+  'Full telemetry history with timestamps',
+  'User ownership with foreign key relationships',
+  'Input validation, rate limiting, quotas',
+  'Hashed API keys, parameterized queries',
+  'Cloud-connected IoT platform with dashboards'
+];
 
 export default function Database() {
   return (
     <>
-      {/* Evaluator Guidance Banner */}
-      <Section title="Evaluator Guide" variant="highlight">
-        <p>
-          <strong>For Evaluators:</strong> This page presents the Databases artifact, demonstrating PostgreSQL schema design, Django ORM integration, API authentication, and secure data handling practices. Links to original and enhanced code repositories are available in the navigation sidebar and at the bottom of this page. Database diagrams including the ERD and telemetry pipeline are provided in the Related Schema section below.
-        </p>
-      </Section>
+      <PageHero
+        artifactType="Artifact 3 of 3"
+        title="Databases"
+        summary="A complete backend infrastructure transforming the thermostat from an isolated device into a secure, cloud-connected IoT platform with persistent telemetry storage."
+        badges={['PostgreSQL', 'Django', 'REST API', 'Security', 'ORM', 'Telemetry']}
+      />
 
-      <Section title="Artifact Overview" variant="highlight">
+      <TableOfContents items={tocItems} />
+
+      <KeyTakeaways items={keyTakeaways} />
+
+      <Section id="overview" title="Artifact Overview" variant="highlight">
         <p>
           This artifact demonstrates the database design and data management practices I implemented to support the thermostat ecosystem's backend infrastructure. The enhanced system uses PostgreSQL as its relational database, accessed through Django's ORM, to provide persistent storage for device telemetry, user accounts, device registrations, and alert configurations. Proper database design transforms the thermostat from an isolated embedded device into a connected system capable of historical analysis, trend visualization, and intelligent alerting.
         </p>
@@ -21,7 +81,7 @@ export default function Database() {
         </p>
       </Section>
 
-      <Section title="Original Data Handling Approach">
+      <Section id="original-approach" title="Original Data Handling Approach">
         <p>
           The original CS-350 thermostat project had no database component whatsoever. Sensor readings existed only in memory during program execution and were lost when the device powered down or restarted. There was no mechanism for storing historical temperature data, no way to track setpoint changes over time, and no persistent record of heating or cooling cycles. The system operated entirely in the present moment with no concept of data persistence.
         </p>
@@ -33,7 +93,14 @@ export default function Database() {
         </p>
       </Section>
 
-      <Section title="Enhanced Database Design">
+      <ComparisonBlock
+        originalTitle="Original Data Handling"
+        enhancedTitle="Enhanced Database"
+        original={comparisonOriginal}
+        enhanced={comparisonEnhanced}
+      />
+
+      <Section id="enhanced-design" title="Enhanced Database Design">
         <p>
           The enhanced thermostat ecosystem includes a Django backend with PostgreSQL that implements a properly normalized relational schema. I designed the database around core entities that reflect the real-world objects and relationships in the system: Users who own and manage devices, Devices that represent physical thermostats, Telemetry Snapshots that capture point-in-time readings, Device API Keys that authenticate device communication, and Alert Settings that define notification thresholds.
         </p>
@@ -51,7 +118,7 @@ export default function Database() {
         </p>
       </Section>
 
-      <Section title="Data Management and Querying">
+      <Section id="data-management" title="Data Management and Querying">
         <p>
           Data ingestion follows a structured pipeline that validates, normalizes, and stores incoming telemetry. When a device posts a reading to the ingestion endpoint, the system first authenticates the request using the hashed API key. It then validates that all required fields are present and that values fall within plausible ranges. Timestamps are normalized to UTC before storage. Only after passing all validation checks is the data written to the database, ensuring that corrupt or malformed readings never pollute the dataset.
         </p>
@@ -69,7 +136,7 @@ export default function Database() {
         </p>
       </Section>
 
-      <Section title="Security and Reliability Considerations">
+      <Section id="security" title="Security and Reliability Considerations">
         <p>
           Security is woven throughout the database design rather than bolted on as an afterthought. API keys are never stored in plaintext; only their cryptographic hashes exist in the database. This means that database backups, logs, and debugging sessions never expose credentials that could be used to impersonate devices. Key rotation is supported through the administrative interface, allowing users to revoke compromised keys without disrupting other devices.
         </p>
@@ -87,7 +154,7 @@ export default function Database() {
         </p>
       </Section>
 
-      <Section title="Course Outcomes Mapping">
+      <Section id="outcomes" title="Course Outcomes Mapping">
         <p>
           <strong>Outcome 3 - Designing and Evaluating Computing Solutions:</strong> This artifact demonstrates my ability to design computing solutions using sound database modeling principles. I analyzed the data requirements of the thermostat ecosystem, identified the entities and relationships that needed to be represented, and designed a normalized schema that balances query efficiency against storage overhead. The choice of relational modeling over document storage reflects an evaluation of the data's structure and access patterns, selecting the approach best suited to the application's needs.
         </p>
@@ -99,52 +166,38 @@ export default function Database() {
         </p>
       </Section>
 
-      <Section title="Related Schema & Documents">
+      <Section id="diagrams" title="Database Schema & Documents">
         <p>
-          Supporting materials for this artifact:
+          The following diagrams illustrate the database architecture and data flow:
         </p>
-        <h4>Database Diagrams</h4>
         
         <DiagramViewer 
           src="/src/assets/diagrams/db-erd.png" 
-          alt="Database Entity-Relationship Diagram"
+          alt="Database Entity-Relationship Diagram showing normalized schema with User, Device, DeviceAPIKey, TelemetrySnapshot, and DeviceAlertSettings entities connected by foreign key relationships"
           caption="Database Entity-Relationship Diagram — Shows the normalized schema including User, Device, DeviceAPIKey, TelemetrySnapshot, and DeviceAlertSettings entities with their relationships."
         />
         
         <DiagramViewer 
           src="/src/assets/diagrams/telemetry-pipeline.png" 
-          alt="Telemetry Ingestion Pipeline Diagram"
+          alt="Telemetry Ingestion Pipeline Diagram showing complete data flow from ESP32 sensor through WiFi, API authentication with hashed keys, input validation, and PostgreSQL storage"
           caption="Telemetry Ingestion Pipeline — Illustrates the complete data flow from ESP32 sensor reading through API authentication, validation, and database storage."
         />
         
-        <h4>Code Repositories</h4>
+        <h3>Code Repositories</h3>
         <ul>
-          <li><Link to="/original-code">Original Code Repository</Link></li>
-          <li><Link to="/enhanced-code">Enhanced Code Repository</Link></li>
+          <li><Link to="/original-code">Original Code Repository</Link> — The CS-350 Raspberry Pi implementation</li>
+          <li><Link to="/enhanced-code">Enhanced Code Repository</Link> — The refactored ESP32/FreeRTOS implementation</li>
           <li><a href="https://github.com/gonzalopatino/ESP32_FreeRTOS_Thermostat" target="_blank" rel="noopener noreferrer">GitHub: ESP32 FreeRTOS Thermostat</a></li>
           <li><a href="https://github.com/gonzalopatino/ESP32_FreeRTOS_Thermostat_Server" target="_blank" rel="noopener noreferrer">GitHub: Django Backend Server</a></li>
         </ul>
       </Section>
 
-      {/* Evaluator Navigation */}
-      <Section title="Evaluator Navigation">
-        <p>Continue exploring the ePortfolio:</p>
-        <nav aria-label="Artifact navigation">
-          <ul className="evaluator-nav">
-            <li><Link to="/">Back to Home</Link></li>
-            <li><Link to="/assessment">Professional Self-Assessment</Link></li>
-            <li><Link to="/code-review">Code Review</Link></li>
-            <li><Link to="/software-engineering">Software Engineering</Link></li>
-            <li><Link to="/algorithms">Algorithms</Link></li>
-            <li><Link to="/database">Database</Link></li>
-            <li><Link to="/original-code">Original Code</Link></li>
-            <li><Link to="/enhanced-code">Enhanced Code</Link></li>
-          </ul>
-        </nav>
-        <p className="meta-updated">
-          <em>Last updated: February 2025</em>
-        </p>
-      </Section>
+      <CTAFooter
+        prevLink="/algorithms"
+        prevLabel="Algorithms"
+        nextLink="/original-code"
+        nextLabel="Original Code"
+      />
     </>
   );
 }

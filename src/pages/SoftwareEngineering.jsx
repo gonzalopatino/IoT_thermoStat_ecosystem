@@ -1,18 +1,78 @@
 import { Link } from 'react-router-dom';
 import Section from '../components/Section';
 import DiagramViewer from '../components/DiagramViewer';
+import PageHero from '../components/PageHero';
+import TableOfContents from '../components/TableOfContents';
+import KeyTakeaways from '../components/KeyTakeaways';
+import ComparisonBlock from '../components/ComparisonBlock';
+import CTAFooter from '../components/CTAFooter';
+
+const tocItems = [
+  { id: 'overview', label: 'Artifact Overview' },
+  { id: 'original-design', label: 'Original Design' },
+  { id: 'enhanced-design', label: 'Enhanced Design' },
+  { id: 'practices', label: 'Engineering Practices' },
+  { id: 'connections', label: 'Connection to Artifacts' },
+  { id: 'outcomes', label: 'Course Outcomes' },
+  { id: 'diagrams', label: 'Diagrams & Documents' },
+];
+
+const keyTakeaways = [
+  {
+    type: 'original',
+    title: 'Original State',
+    content: 'Monolithic Python script with tightly coupled logic, hardcoded values, and no separation of concerns.'
+  },
+  {
+    type: 'enhanced',
+    title: 'Enhanced State',
+    content: 'Modular FreeRTOS architecture with dedicated tasks, HAL abstraction, centralized configuration, and structured logging.'
+  },
+  {
+    type: 'impact',
+    title: 'Why It Matters',
+    content: 'Professional-grade embedded systems require maintainability, testability, and extensibility that only proper architecture provides.'
+  },
+  {
+    type: 'outcomes',
+    title: 'CS-499 Outcomes',
+    content: 'Demonstrates Outcomes 1, 2, and 4: collaboration practices, technical communication, and industry-standard techniques.'
+  }
+];
+
+const comparisonOriginal = [
+  'Single Python script handling all logic',
+  'Hardcoded GPIO pins and thresholds',
+  'No task separation or concurrency',
+  'Debug prints scattered throughout',
+  'No hardware abstraction layer',
+  'Difficult to test individual components'
+];
+
+const comparisonEnhanced = [
+  'Concurrent FreeRTOS tasks with clear responsibilities',
+  'Centralized configuration headers',
+  'Task-based architecture with queues and mutexes',
+  'Structured, leveled logging system',
+  'HAL layer for hardware portability',
+  'Modular design enables isolated testing'
+];
 
 export default function SoftwareEngineering() {
   return (
     <>
-      {/* Evaluator Guidance Banner */}
-      <Section title="Evaluator Guide" variant="highlight">
-        <p>
-          <strong>For Evaluators:</strong> This page presents the Software Engineering and Design artifact, demonstrating modular architecture, FreeRTOS task management, and professional embedded systems practices. Links to original and enhanced code repositories are available in the navigation sidebar and at the bottom of this page. Architecture diagrams are provided in the Related Documents section below.
-        </p>
-      </Section>
+      <PageHero
+        artifactType="Artifact 1 of 3"
+        title="Software Engineering & Design"
+        summary="A comprehensive refactoring of the thermostat system from a monolithic script to a professional-grade embedded architecture using FreeRTOS on ESP32."
+        badges={['ESP32', 'FreeRTOS', 'C/C++', 'Embedded Systems', 'Modular Architecture', 'HAL']}
+      />
 
-      <Section title="Artifact Overview" variant="highlight">
+      <TableOfContents items={tocItems} />
+
+      <KeyTakeaways items={keyTakeaways} />
+
+      <Section id="overview" title="Artifact Overview" variant="highlight">
         <p>
           This artifact showcases the software engineering and design practices I applied to transform a basic thermostat project into a professional-grade embedded system. The enhanced thermostat runs on an ESP32 microcontroller using FreeRTOS, featuring a modular task-based architecture that separates sensor reading, control logic, logging, and network communication into distinct, maintainable components. The system demonstrates core software engineering principles including separation of concerns, loose coupling, and cohesive module design.
         </p>
@@ -21,7 +81,7 @@ export default function SoftwareEngineering() {
         </p>
       </Section>
 
-      <Section title="Original Design (Pre-Enhancement)">
+      <Section id="original-design" title="Original Design (Pre-Enhancement)">
         <p>
           The original thermostat project was developed during CS-350 as an introduction to embedded systems programming. Like many academic projects, it prioritized getting something working over long-term maintainability. The code was largely monolithic, with sensor reading, temperature comparisons, and output control logic intermingled in a single main loop. There was little separation between what the system did and how it interacted with specific hardware peripherals.
         </p>
@@ -33,7 +93,14 @@ export default function SoftwareEngineering() {
         </p>
       </Section>
 
-      <Section title="Enhanced Design and Architecture">
+      <ComparisonBlock
+        originalTitle="Original Architecture"
+        enhancedTitle="Enhanced Architecture"
+        original={comparisonOriginal}
+        enhanced={comparisonEnhanced}
+      />
+
+      <Section id="enhanced-design" title="Enhanced Design and Architecture">
         <p>
           The enhanced thermostat was redesigned from the ground up using FreeRTOS on the ESP32 platform. Instead of a monolithic main loop, the system now operates as a collection of concurrent tasks, each responsible for a specific domain of functionality. This task-based architecture allows each component to operate independently, communicate through well-defined interfaces, and be modified without affecting unrelated parts of the system.
         </p>
@@ -54,7 +121,7 @@ export default function SoftwareEngineering() {
         </p>
       </Section>
 
-      <Section title="Software Engineering Practices Demonstrated">
+      <Section id="practices" title="Software Engineering Practices Demonstrated">
         <p>
           The thermostat project demonstrates several software engineering practices that distinguish professional development from academic exercises. The modular component design means that each source file has a clear, focused responsibility and exposes a well-defined interface to other modules. Internal implementation details are hidden, allowing me to refactor individual components without rippling changes throughout the codebase.
         </p>
@@ -72,7 +139,7 @@ export default function SoftwareEngineering() {
         </p>
       </Section>
 
-      <Section title="Connection to Other Artifacts">
+      <Section id="connections" title="Connection to Other Artifacts">
         <p>
           The Software Engineering artifact represents the structural foundation upon which the other artifacts build. The Algorithms artifact examines the control logic that runs within the control task, exploring the state machine design, hysteresis implementation, and timing decisions that determine when heating and cooling activate. That analysis focuses on computational correctness and efficiency rather than the modular structure that contains it.
         </p>
@@ -81,7 +148,7 @@ export default function SoftwareEngineering() {
         </p>
       </Section>
 
-      <Section title="Course Outcomes Mapping">
+      <Section id="outcomes" title="Course Outcomes Mapping">
         <p>
           <strong>Outcome 1 - Collaboration and Professional Practice:</strong> Throughout this project, I used Git for version control, maintaining a clear branching strategy that separated feature development from stable releases. I documented design decisions in README files and code comments so that other developers could understand not just what the code does but why it was structured that way. When making significant architectural changes, I considered how those changes would affect anyone else working on the project, writing interfaces that were intuitive and self-documenting.
         </p>
@@ -93,57 +160,43 @@ export default function SoftwareEngineering() {
         </p>
       </Section>
 
-      <Section title="Related Documents & Diagrams">
+      <Section id="diagrams" title="Architecture Diagrams & Documents">
         <p>
-          Supporting materials for this artifact:
+          The following diagrams illustrate the enhanced system architecture and component relationships:
         </p>
-        <h4>Architecture Diagrams</h4>
         
         <DiagramViewer 
           src="/src/assets/diagrams/task-architecture.png" 
-          alt="FreeRTOS Task Architecture Diagram"
+          alt="FreeRTOS Task Architecture Diagram showing all concurrent tasks including Sensor, Control, Logger, Heartbeat, and Telemetry tasks with their priorities and inter-task communication through queues and shared resources"
           caption="FreeRTOS Task Architecture — Shows all concurrent tasks, their priorities, and inter-task communication through queues and shared resources."
         />
         
         <DiagramViewer 
           src="/src/assets/diagrams/layered-architecture.png" 
-          alt="Firmware Layered Architecture Diagram"
+          alt="Firmware Layered Architecture Diagram illustrating the separation between Application layer, Core business logic, Driver interfaces, and Hardware Abstraction Layer"
           caption="Firmware Layered Architecture — Illustrates the separation between Application, Core, Drivers, and HAL layers."
         />
         
         <DiagramViewer 
           src="/src/assets/diagrams/config-hal-structure.png" 
-          alt="Configuration and HAL Structure Diagram"
+          alt="Configuration and HAL Structure Diagram showing configuration headers and hardware abstraction modules for GPIO, sensors, and peripherals"
           caption="Configuration and HAL Structure — Details the configuration headers and hardware abstraction modules."
         />
         
-        <h4>Code Repositories</h4>
+        <h3>Code Repositories</h3>
         <ul>
-          <li><Link to="/original-code">Original Code Repository</Link></li>
-          <li><Link to="/enhanced-code">Enhanced Code Repository</Link></li>
+          <li><Link to="/original-code">Original Code Repository</Link> — The CS-350 Raspberry Pi implementation</li>
+          <li><Link to="/enhanced-code">Enhanced Code Repository</Link> — The refactored ESP32/FreeRTOS implementation</li>
           <li><a href="https://github.com/gonzalopatino/ESP32_FreeRTOS_Thermostat" target="_blank" rel="noopener noreferrer">GitHub: ESP32 FreeRTOS Thermostat</a></li>
         </ul>
       </Section>
 
-      {/* Evaluator Navigation */}
-      <Section title="Evaluator Navigation">
-        <p>Continue exploring the ePortfolio:</p>
-        <nav aria-label="Artifact navigation">
-          <ul className="evaluator-nav">
-            <li><Link to="/">Back to Home</Link></li>
-            <li><Link to="/assessment">Professional Self-Assessment</Link></li>
-            <li><Link to="/code-review">Code Review</Link></li>
-            <li><Link to="/software-engineering">Software Engineering</Link></li>
-            <li><Link to="/algorithms">Algorithms</Link></li>
-            <li><Link to="/database">Database</Link></li>
-            <li><Link to="/original-code">Original Code</Link></li>
-            <li><Link to="/enhanced-code">Enhanced Code</Link></li>
-          </ul>
-        </nav>
-        <p className="meta-updated">
-          <em>Last updated: February 2025</em>
-        </p>
-      </Section>
+      <CTAFooter
+        prevLink="/code-review"
+        prevLabel="Code Review"
+        nextLink="/algorithms"
+        nextLabel="Algorithms"
+      />
     </>
   );
 }

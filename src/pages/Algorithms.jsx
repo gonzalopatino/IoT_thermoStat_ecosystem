@@ -1,18 +1,78 @@
 import { Link } from 'react-router-dom';
 import Section from '../components/Section';
 import DiagramViewer from '../components/DiagramViewer';
+import PageHero from '../components/PageHero';
+import TableOfContents from '../components/TableOfContents';
+import KeyTakeaways from '../components/KeyTakeaways';
+import ComparisonBlock from '../components/ComparisonBlock';
+import CTAFooter from '../components/CTAFooter';
+
+const tocItems = [
+  { id: 'overview', label: 'Artifact Overview' },
+  { id: 'original-approach', label: 'Original Approach' },
+  { id: 'enhanced-design', label: 'Enhanced Design' },
+  { id: 'complexity', label: 'Complexity & Data Structures' },
+  { id: 'correctness', label: 'Correctness & Reliability' },
+  { id: 'outcomes', label: 'Course Outcomes' },
+  { id: 'diagrams', label: 'Diagrams & Code' },
+];
+
+const keyTakeaways = [
+  {
+    type: 'original',
+    title: 'Original State',
+    content: 'Simple polling loop with direct comparisons, no state memory, and rapid cycling behavior.'
+  },
+  {
+    type: 'enhanced',
+    title: 'Enhanced State',
+    content: 'Formal FSM with 4 states, table-driven transitions, hysteresis, and timing constraints.'
+  },
+  {
+    type: 'impact',
+    title: 'Why It Matters',
+    content: 'Deterministic O(1) control decisions, equipment protection through min run times, and provable correctness.'
+  },
+  {
+    type: 'outcomes',
+    title: 'CS-499 Outcomes',
+    content: 'Demonstrates Outcomes 3, 4, and 5: algorithmic problem-solving, innovative techniques, and reliability mindset.'
+  }
+];
+
+const comparisonOriginal = [
+  'Direct temperature comparison each cycle',
+  'No formal state representation',
+  'Rapid on-off cycling near setpoint',
+  'No minimum run/off time protection',
+  'Reactive with no memory of past decisions',
+  'Edge-case prone behavior'
+];
+
+const comparisonEnhanced = [
+  'Table-driven FSM with defined transitions',
+  'Four explicit states: Idle, Heating, Cooling, Error',
+  'Hysteresis dead band prevents cycling',
+  'Minimum run/off times protect equipment',
+  'State persistence enables sophisticated control',
+  'Exhaustively testable, provably correct'
+];
 
 export default function Algorithms() {
   return (
     <>
-      {/* Evaluator Guidance Banner */}
-      <Section title="Evaluator Guide" variant="highlight">
-        <p>
-          <strong>For Evaluators:</strong> This page presents the Algorithms and Data Structures artifact, demonstrating the finite state machine design, hysteresis implementation, and timing constraints that govern thermostat control behavior. Links to original and enhanced code repositories are available in the navigation sidebar and at the bottom of this page. Algorithm diagrams including the FSM and data flow are provided in the Related Code section below.
-        </p>
-      </Section>
+      <PageHero
+        artifactType="Artifact 2 of 3"
+        title="Algorithms & Data Structures"
+        summary="The computational foundation of thermostat control: a formal finite state machine with hysteresis, timing constraints, and O(1) deterministic operation."
+        badges={['FSM', 'Hysteresis', 'State Machine', 'O(1) Complexity', 'Real-Time', 'Embedded']}
+      />
 
-      <Section title="Artifact Overview" variant="highlight">
+      <TableOfContents items={tocItems} />
+
+      <KeyTakeaways items={keyTakeaways} />
+
+      <Section id="overview" title="Artifact Overview" variant="highlight">
         <p>
           This artifact examines the algorithmic foundations of my thermostat control system, focusing on the computational logic that governs temperature regulation, state transitions, and system responsiveness. The enhanced design replaces a simplistic polling approach with a formal finite state machine, hysteresis-based decision making, and carefully chosen data structures that ensure deterministic, efficient operation on resource-constrained embedded hardware.
         </p>
@@ -21,7 +81,7 @@ export default function Algorithms() {
         </p>
       </Section>
 
-      <Section title="Original Algorithmic Approach">
+      <Section id="original-approach" title="Original Algorithmic Approach">
         <p>
           The original CS-350 thermostat used a straightforward polling loop to manage temperature control. Every iteration of the main loop would read the current temperature, compare it directly against a setpoint, and immediately activate or deactivate heating or cooling based on whether the reading was above or below the target. This approach had the virtue of simplicity but suffered from several algorithmic deficiencies that became apparent during extended operation.
         </p>
@@ -33,7 +93,14 @@ export default function Algorithms() {
         </p>
       </Section>
 
-      <Section title="Enhanced Algorithmic Design">
+      <ComparisonBlock
+        originalTitle="Original Algorithm"
+        enhancedTitle="Enhanced Algorithm"
+        original={comparisonOriginal}
+        enhanced={comparisonEnhanced}
+      />
+
+      <Section id="enhanced-design" title="Enhanced Algorithmic Design">
         <p>
           The enhanced thermostat implements a formal finite state machine with four primary states: Idle, Heating, Cooling, and Error. Each state represents a distinct operational mode with its own set of permissible transitions. The system can only move between states according to defined rules, which eliminates the chaotic behavior of the original polling approach and provides a clear mental model for reasoning about system behavior.
         </p>
@@ -51,7 +118,7 @@ export default function Algorithms() {
         </p>
       </Section>
 
-      <Section title="Complexity and Data Structures">
+      <Section id="complexity" title="Complexity and Data Structures">
         <p>
           The data structures supporting the control algorithm were selected for both efficiency and clarity. Sensor readings are stored in a shared structure that includes not just the current values but also timestamps and validity flags. This structure is protected by a mutex to prevent race conditions when the sensor task updates readings while the control task evaluates them. The overhead of mutex acquisition is minimal and predictable, which is essential for real-time operation.
         </p>
@@ -66,7 +133,7 @@ export default function Algorithms() {
         </p>
       </Section>
 
-      <Section title="Algorithmic Correctness, Efficiency, and Reliability">
+      <Section id="correctness" title="Algorithmic Correctness, Efficiency, and Reliability">
         <p>
           Algorithmic correctness is ensured through the formal structure of the finite state machine. Because all valid transitions are explicitly enumerated in the transition table, invalid state changes are impossible by construction. I verified correctness by systematically testing each state with each possible input condition and confirming that the resulting state and actions matched the specification. This exhaustive testing is feasible precisely because the algorithm is structured to have a finite, enumerable set of behaviors.
         </p>
@@ -81,7 +148,7 @@ export default function Algorithms() {
         </p>
       </Section>
 
-      <Section title="Course Outcomes Mapping">
+      <Section id="outcomes" title="Course Outcomes Mapping">
         <p>
           <strong>Outcome 3 - Designing and Evaluating Computing Solutions:</strong> This artifact demonstrates my ability to design computing solutions that solve problems using algorithmic principles and computer science practices. The finite state machine provides a mathematically grounded approach to control logic, replacing ad-hoc conditionals with a formal model that can be analyzed for correctness and completeness. The hysteresis algorithm solves the practical problem of rapid cycling while the timing model ensures decisions are made at appropriate intervals. Each algorithmic choice was evaluated against alternatives and selected based on its fitness for the embedded systems context.
         </p>
@@ -93,51 +160,37 @@ export default function Algorithms() {
         </p>
       </Section>
 
-      <Section title="Related Code & Diagrams">
+      <Section id="diagrams" title="Algorithm Diagrams & Code">
         <p>
-          Supporting materials for this artifact:
+          The following diagrams illustrate the finite state machine and data flow architecture:
         </p>
-        <h4>Algorithm Diagrams</h4>
         
         <DiagramViewer 
           src="/src/assets/diagrams/fsm-diagram.png" 
-          alt="Thermostat Control FSM Diagram"
+          alt="Thermostat Control Finite State Machine Diagram showing four states (Idle, Heating, Cooling, Error) with labeled transitions including temperature thresholds, hysteresis conditions, and error triggers"
           caption="Thermostat Control Finite State Machine — Shows the four states (Idle, Heating, Cooling, Error) and all valid transitions with their triggering conditions."
         />
         
         <DiagramViewer 
           src="/src/assets/diagrams/control-data-flow.png" 
-          alt="Control Data Flow Diagram"
+          alt="Control Data Flow Diagram illustrating sensor input processing through validation, state machine evaluation, and control output generation with timing constraints"
           caption="Control Data Flow — Illustrates the flow of data from sensor input through state evaluation to control output."
         />
         
-        <h4>Code Repositories</h4>
+        <h3>Code Repositories</h3>
         <ul>
-          <li><Link to="/original-code">Original Code Repository</Link></li>
-          <li><Link to="/enhanced-code">Enhanced Code Repository</Link></li>
+          <li><Link to="/original-code">Original Code Repository</Link> — The CS-350 Raspberry Pi implementation</li>
+          <li><Link to="/enhanced-code">Enhanced Code Repository</Link> — The refactored ESP32/FreeRTOS implementation</li>
           <li><a href="https://github.com/gonzalopatino/ESP32_FreeRTOS_Thermostat" target="_blank" rel="noopener noreferrer">GitHub: ESP32 FreeRTOS Thermostat</a></li>
         </ul>
       </Section>
 
-      {/* Evaluator Navigation */}
-      <Section title="Evaluator Navigation">
-        <p>Continue exploring the ePortfolio:</p>
-        <nav aria-label="Artifact navigation">
-          <ul className="evaluator-nav">
-            <li><Link to="/">Back to Home</Link></li>
-            <li><Link to="/assessment">Professional Self-Assessment</Link></li>
-            <li><Link to="/code-review">Code Review</Link></li>
-            <li><Link to="/software-engineering">Software Engineering</Link></li>
-            <li><Link to="/algorithms">Algorithms</Link></li>
-            <li><Link to="/database">Database</Link></li>
-            <li><Link to="/original-code">Original Code</Link></li>
-            <li><Link to="/enhanced-code">Enhanced Code</Link></li>
-          </ul>
-        </nav>
-        <p className="meta-updated">
-          <em>Last updated: February 2025</em>
-        </p>
-      </Section>
+      <CTAFooter
+        prevLink="/software-engineering"
+        prevLabel="Software Engineering"
+        nextLink="/database"
+        nextLabel="Database"
+      />
     </>
   );
 }
