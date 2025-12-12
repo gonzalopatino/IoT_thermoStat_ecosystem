@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Rocket, Package, Link as LinkIcon } from 'lucide-react';
+import { Rocket, Package, Link as LinkIcon, Play } from 'lucide-react';
 import Section from '../components/Section';
 
 export default function EnhancedCode() {
@@ -14,7 +14,27 @@ export default function EnhancedCode() {
         </p>
       </Section>
 
-      <Section title="B. Enhanced Project Components" icon={<Package size={20} />}>
+      <Section title="B. Live Demo Video" icon={<Play size={20} />}>
+        <p>
+          Watch the complete end-to-end demonstration of the enhanced thermostat system, 
+          showing the firmware running on the ESP32 communicating with the Django cloud backend 
+          in real-time.
+        </p>
+        <div className="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/a8ACGF6Fzxk"
+            title="Enhanced Thermostat System Demo: End-to-End from Firmware to Cloud"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div>
+        <p className="text-muted">
+          <em>This video demonstrates the complete IoT pipeline: sensor readings from the ESP32, 
+          real-time telemetry transmission, cloud storage in PostgreSQL, and live dashboard updates.</em>
+        </p>
+      </Section>
+
+      <Section title="C. Enhanced Project Components" icon={<Package size={20} />}>
         <ul className="component-list">
           <li>
             <a href="https://github.com/gonzalopatino/ESP32_FreeRTOS_Thermostat" target="_blank" rel="noopener noreferrer">ESP32 FreeRTOS Thermostat Firmware (C/C++)</a>
@@ -48,7 +68,7 @@ export default function EnhancedCode() {
         </ul>
       </Section>
 
-      <Section title="C. Relationship to Artifacts" icon={<LinkIcon size={20} />}>
+      <Section title="D. Relationship to Artifacts" icon={<LinkIcon size={20} />}>
         <p>
           Each enhanced component is explained in more detail on the{' '}
           <Link to="/software-engineering">Software Engineering</Link>,{' '}
