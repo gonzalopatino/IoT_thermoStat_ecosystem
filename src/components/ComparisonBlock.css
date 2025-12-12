@@ -1,0 +1,208 @@
+/* ============================================
+   COMPARISON BLOCK COMPONENT
+   Dark Theme - Side-by-side comparison
+   ============================================ */
+
+.comparison-block {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: var(--spacing-6);
+  margin: var(--spacing-10) 0;
+  align-items: start;
+}
+
+/* Column styling */
+.comparison-block__column {
+  background: var(--gradient-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-6);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.comparison-block__column::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+.comparison-block__column:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: var(--shadow-card);
+}
+
+.comparison-block__column--original::before {
+  background: linear-gradient(90deg, #6b7280, #9ca3af);
+}
+
+.comparison-block__column--enhanced::before {
+  background: var(--gradient-primary);
+}
+
+.comparison-block__column--enhanced:hover {
+  box-shadow: var(--shadow-card), var(--glow-primary);
+}
+
+/* Header */
+.comparison-block__header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  margin-bottom: var(--spacing-4);
+  padding-bottom: var(--spacing-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.comparison-block__icon {
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comparison-block__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.comparison-block__icon--original {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+
+.comparison-block__icon--enhanced {
+  background: var(--color-primary-muted);
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.comparison-block__title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* List */
+.comparison-block__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.comparison-block__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3) 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+.comparison-block__item--enhanced {
+  color: var(--color-text-secondary);
+}
+
+.comparison-block__bullet {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.comparison-block__bullet--enhanced {
+  background: var(--color-primary-muted);
+  color: var(--color-primary);
+  border-radius: var(--radius-full);
+  font-size: 10px;
+}
+
+/* Divider with arrow */
+.comparison-block__divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: var(--spacing-16);
+}
+
+.comparison-block__arrow {
+  width: 48px;
+  height: 48px;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  box-shadow: var(--glow-primary);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.comparison-block__arrow svg {
+  width: 24px;
+  height: 24px;
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    transform: scale(1);
+    box-shadow: 0 0 15px var(--color-primary-glow);
+  }
+  50% { 
+    transform: scale(1.05);
+    box-shadow: 0 0 25px var(--color-primary-glow);
+  }
+}
+
+/* Responsive - stack on mobile */
+@media (max-width: 768px) {
+  .comparison-block {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+  }
+
+  .comparison-block__divider {
+    padding: var(--spacing-4) 0;
+    order: 1;
+  }
+
+  .comparison-block__column--original {
+    order: 0;
+  }
+
+  .comparison-block__column--enhanced {
+    order: 2;
+  }
+
+  .comparison-block__arrow {
+    transform: rotate(90deg);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .comparison-block__arrow {
+    animation: none;
+  }
+
+  .comparison-block__column:hover {
+    transform: none;
+  }
+}

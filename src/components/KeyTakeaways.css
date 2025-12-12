@@ -1,0 +1,154 @@
+/* ============================================
+   KEY TAKEAWAYS COMPONENT
+   Dark Theme - Visual summary cards grid
+   ============================================ */
+
+.key-takeaways {
+  margin-bottom: var(--spacing-10);
+}
+
+.key-takeaways__title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin-bottom: var(--spacing-6);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.key-takeaways__title::before {
+  content: '';
+  width: 4px;
+  height: 28px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+}
+
+.key-takeaways__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-6);
+}
+
+/* Individual card */
+.takeaway-card {
+  background: var(--gradient-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-6);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.takeaway-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--card-accent, var(--color-border));
+}
+
+.takeaway-card:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-4px);
+}
+
+.takeaway-card:focus-within {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Card variants with glow */
+.takeaway-card--original {
+  --card-accent: #6b7280;
+}
+
+.takeaway-card--original:hover {
+  box-shadow: var(--shadow-card), 0 0 20px rgba(107, 114, 128, 0.15);
+}
+
+.takeaway-card--enhanced {
+  --card-accent: var(--color-primary);
+}
+
+.takeaway-card--enhanced:hover {
+  box-shadow: var(--shadow-card), var(--glow-primary);
+}
+
+.takeaway-card--impact {
+  --card-accent: var(--color-success);
+}
+
+.takeaway-card--impact:hover {
+  box-shadow: var(--shadow-card), var(--glow-success);
+}
+
+.takeaway-card--outcomes {
+  --card-accent: var(--color-accent);
+}
+
+.takeaway-card--outcomes:hover {
+  box-shadow: var(--shadow-card), var(--glow-accent);
+}
+
+/* Icon */
+.takeaway-card__icon {
+  width: 48px;
+  height: 48px;
+  padding: var(--spacing-3);
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--card-accent, var(--color-primary));
+  margin-bottom: var(--spacing-4);
+  transition: all var(--transition-fast);
+}
+
+.takeaway-card:hover .takeaway-card__icon {
+  background: var(--color-bg-hover);
+  border-color: var(--card-accent);
+}
+
+.takeaway-card__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Heading */
+.takeaway-card__heading {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0 0 var(--spacing-3);
+}
+
+/* Content */
+.takeaway-card__content {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .key-takeaways__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .takeaway-card {
+    padding: var(--spacing-5);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .takeaway-card:hover {
+    transform: none;
+  }
+}

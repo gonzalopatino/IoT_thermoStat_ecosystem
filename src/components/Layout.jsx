@@ -1,46 +1,29 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import Nav from './Nav';
+import Footer from './Footer';
 import './Layout.css';
 
 export default function Layout() {
-  return (
-    <div className="site-container">
-      {/* Header */}
-      <header className="site-header">
-        <h1 className="site-title">Gonzalo Patino</h1>
-        <p className="site-subtitle">Computer Science ePortfolio – SNHU CS-499</p>
-        
-        {/* Navigation */}
-        <nav className="site-nav">
-          <div className="nav-row nav-row--primary">
-            <NavLink to="/" end>Home</NavLink>
-            <span className="nav-divider">|</span>
-            <NavLink to="/assessment">Self-Assessment</NavLink>
-            <span className="nav-divider">|</span>
-            <NavLink to="/code-review">Code Review</NavLink>
-          </div>
-          <div className="nav-row nav-row--secondary">
-            <NavLink to="/software-engineering">Software Engineering</NavLink>
-            <span className="nav-divider">|</span>
-            <NavLink to="/algorithms">Algorithms</NavLink>
-            <span className="nav-divider">|</span>
-            <NavLink to="/database">Databases</NavLink>
-            <span className="nav-divider">|</span>
-            <NavLink to="/original-code">Original Code</NavLink>
-            <span className="nav-divider">|</span>
-            <NavLink to="/enhanced-code">Enhanced Code</NavLink>
-          </div>
-        </nav>
-      </header>
+  const location = useLocation();
 
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location.pathname]);
+
+  return (
+    <div className="site-layout">
+      <Nav />
+      
       {/* Main Content */}
       <main className="site-main">
-        <Outlet />
+        <div className="site-content">
+          <Outlet />
+        </div>
       </main>
 
-      {/* Footer */}
-      <footer className="site-footer">
-        <p>© 2025 Gonzalo Patino | SNHU CS-499 Computer Science Capstone</p>
-      </footer>
+      <Footer />
     </div>
   );
 }
