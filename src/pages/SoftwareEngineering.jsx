@@ -179,19 +179,19 @@ export default function SoftwareEngineering() {
         </p>
         
         <DiagramViewer 
-          src="/src/assets/diagrams/task-architecture.png" 
+          src="/diagrams/task-architecture.png" 
           alt="FreeRTOS Task Architecture Diagram showing all concurrent tasks including Sensor, Control, Logger, Heartbeat, and Telemetry tasks with their priorities and inter-task communication through queues and shared resources"
           caption="FreeRTOS Task Architecture — Shows all concurrent tasks, their priorities, and inter-task communication through queues and shared resources."
         />
         
         <DiagramViewer 
-          src="/src/assets/diagrams/layered-architecture.png" 
+          src="/diagrams/layered-architecture.png" 
           alt="Firmware Layered Architecture Diagram illustrating the separation between Application layer, Core business logic, Driver interfaces, and Hardware Abstraction Layer"
           caption="Firmware Layered Architecture — Illustrates the separation between Application, Core, Drivers, and HAL layers."
         />
         
         <DiagramViewer 
-          src="/src/assets/diagrams/config-hal-structure.png" 
+          src="/diagrams/config-hal-structure.png" 
           alt="Configuration and HAL Structure Diagram showing configuration headers and hardware abstraction modules for GPIO, sensors, and peripherals"
           caption="Configuration and HAL Structure — Details the configuration headers and hardware abstraction modules."
         />

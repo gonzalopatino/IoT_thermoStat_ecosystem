@@ -184,13 +184,13 @@ export default function Database() {
         </p>
         
         <DiagramViewer 
-          src="/src/assets/diagrams/db-erd.png" 
+          src="/diagrams/db-erd.png" 
           alt="Database Entity-Relationship Diagram showing normalized schema with User, Device, DeviceAPIKey, TelemetrySnapshot, and DeviceAlertSettings entities connected by foreign key relationships"
           caption="Database Entity-Relationship Diagram — Shows the normalized schema including User, Device, DeviceAPIKey, TelemetrySnapshot, and DeviceAlertSettings entities with their relationships."
         />
         
         <DiagramViewer 
-          src="/src/assets/diagrams/telemetry-pipeline.png" 
+          src="/diagrams/telemetry-pipeline.png" 
           alt="Telemetry Ingestion Pipeline Diagram showing complete data flow from ESP32 sensor through WiFi, API authentication with hashed keys, input validation, and PostgreSQL storage"
           caption="Telemetry Ingestion Pipeline — Illustrates the complete data flow from ESP32 sensor reading through API authentication, validation, and database storage."
         />

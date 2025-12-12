@@ -178,13 +178,13 @@ export default function Algorithms() {
         </p>
         
         <DiagramViewer 
-          src="/src/assets/diagrams/fsm-diagram.png" 
+          src="/diagrams/fsm-diagram.png" 
           alt="Thermostat Control Finite State Machine Diagram showing four states (Idle, Heating, Cooling, Error) with labeled transitions including temperature thresholds, hysteresis conditions, and error triggers"
           caption="Thermostat Control Finite State Machine — Shows the four states (Idle, Heating, Cooling, Error) and all valid transitions with their triggering conditions."
         />
         
         <DiagramViewer 
-          src="/src/assets/diagrams/control-data-flow.png" 
+          src="/diagrams/control-data-flow.png" 
           alt="Control Data Flow Diagram illustrating sensor input processing through validation, state machine evaluation, and control output generation with timing constraints"
           caption="Control Data Flow — Illustrates the flow of data from sensor input through state evaluation to control output."
         />
