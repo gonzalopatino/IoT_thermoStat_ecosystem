@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 
+      SPA redirect handler for GitHub Pages - MUST run BEFORE any other scripts.
+      Works with public/404.html to enable BrowserRouter deep links.
+    -->
+    <script>
+      (function() {
+        // Handle redirect from 404.html (path encoded as ?/path or ?p=/path)
+        var search = window.location.search;
+        var hash = window.location.hash;
+        
+        // Check for ?/path format (from 404.html redirect)
+        if (search && search.length > 1 && search[1] === '/') {
+          var decoded = search.slice(1).split('&').map(function(s) {
+            return s.replace(/~and~/g, '&');
+          }).join('?');
+          
+          var newPath = window.location.pathname.slice(0, -1) + decoded + hash;
+          window.history.replaceState(null, null, newPath);
+        }
+        
+        // Also handle ?p=/path&q=query format (alternative encoding)
+        else if (search) {
+          var params = new URLSearchParams(search);
+          var path = params.get('p');
+          var query = params.get('q');
+          
+          if (path) {
+            var newUrl = path + (query ? '?' + query : '') + hash;
+            window.history.replaceState(null, null, newUrl);
+          }
+        }
+      })();
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/gpatino.github.io/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gonzalopatino.github.io</title>
+    <script type="module" crossorigin src="/gpatino.github.io/assets/index-D8n0FIcN.js"></script>
+    <link rel="stylesheet" crossorigin href="/gpatino.github.io/assets/index-BpQpN3yp.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
